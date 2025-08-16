@@ -1,4 +1,5 @@
 import { TradeEvent } from "../../utils/interface";
+import "./TradeEventBlock.css";
 
 interface TradeEventBlockProps {
     event: TradeEvent;
@@ -28,9 +29,9 @@ export const TradeEventBlock: React.FC<TradeEventBlockProps> = ({event, onChange
           onChange={(e) => onChange("action", e.target.value)}
           required
         >
-          <option value="">Select Action</option>
           <option value="Buy">Buy</option>
           <option value="Sell">Sell</option>
+          <option value="Cancel">Cancel</option>
         </select>
       </div>
       <div className="form-group">

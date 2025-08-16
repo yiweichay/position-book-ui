@@ -17,14 +17,18 @@ import { TradeEventForm } from '../components/TradeEventForm/TradeEventForm';
 
 export const CreateEvent = () => {
 
-    // useEffect(() => {
-    //     const response = createTradeEvent(fakeEvent);
-    //     console.log(response);
-    // }, []);
+    const handleFormSubmit = async (events: TradeEvent[]) => {
+        const response = await createTradeEvent({ events });
+        if (response) {
+            console.log("Event created successfully:", response);
+        } else {
+            console.error("Failed to create event");
+        }
+    }
 
   return (
-    <div>
-      <TradeEventForm/>
+    <div className = "trade-event-wrapper">
+      <TradeEventForm handleFormSubmit={handleFormSubmit}/>
     </div>
   )
 }

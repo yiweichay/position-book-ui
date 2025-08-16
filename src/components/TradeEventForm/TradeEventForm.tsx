@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { TradeEventBlock } from "../TradeEventBlock/TradeEventBlock";
 import { TradeAction, TradeEvent } from "../../utils/interface";
+import "./TradeEventForm.css";
 
-export const TradeEventForm = () => {
+export interface TradeEventFormProps {
+  handleFormSubmit: (events: TradeEvent[]) => void;
+}
+
+export const TradeEventForm: React.FC<TradeEventFormProps> = ({
+  handleFormSubmit,
+}) => {
   const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([
     { id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },
   ]);
 
-  const handleSubmit = () => {};
-
-  const addTradeEvent = () => {
+  const handleAddTradeEvent = () => {
     setTradeEvents([
       ...tradeEvents,
       {
@@ -33,6 +38,12 @@ export const TradeEventForm = () => {
       [field]: value,
     };
     setTradeEvents(updatedEvents);
+    console.log("tradeEvents", tradeEvents);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleFormSubmit(tradeEvents);
   };
 
   return (
@@ -40,13 +51,17 @@ export const TradeEventForm = () => {
       <form onSubmit={handleSubmit}>
         {tradeEvents.map((event, index) => (
           <TradeEventBlock
+            key={index}
             event={event}
             onChange={(field, value) => handleEventChange(index, field, value)}
           />
         ))}
-        <button type="button" onClick={addTradeEvent}>
-          Add Event
-        </button>
+        <div className="button-wrapper">
+          <button type="button" onClick={handleAddTradeEvent}>
+            Add Event
+          </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );

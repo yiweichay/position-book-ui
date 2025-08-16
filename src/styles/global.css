@@ -30,3 +30,8 @@ a {
 a:hover {
   color: var(--secondary-color);
 }
+
+.trade-event-wrapper {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}

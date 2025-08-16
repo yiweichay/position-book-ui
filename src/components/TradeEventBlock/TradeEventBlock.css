@@ -1,0 +1,39 @@
+.TradeEventBlock {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.TradeEventBlock .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.TradeEventBlock .form-group label {
+  font-weight: bold;
+  margin-right: 1rem;
+  color: var(--secondary-color);
+  width: 120px; /* Fixed width for labels */
+  text-align: right; /* Align label text to the right */
+}
+
+.TradeEventBlock .form-group input,
+.TradeEventBlock .form-group select {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.TradeEventBlock .form-group input:focus,
+.TradeEventBlock .form-group select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 4px rgba(0, 109, 170, 0.5);
+  outline: none;
+}
