@@ -1,0 +1,30 @@
+.Navbar {
+  background-color:  hsl(36, 38%, 92%);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar nav ul li {
+  display: inline;
+}
+
+.Navbar nav ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.Navbar nav ul li a:hover {
+  color: --secondary-color;
+}
