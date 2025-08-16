@@ -1,4 +1,5 @@
 import { TradeEvent } from "../../../utils/interface";
+import "./EventCard.css";
 
 export interface EventCardProps {
     event: TradeEvent;
@@ -6,7 +7,7 @@ export interface EventCardProps {
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   return (
-    <div className="EventCard">
+    <div className="event-card">
       <div className="event-details">
         <h3>Event ID: {event.id}</h3>
         <p>Action: {event.action}</p>

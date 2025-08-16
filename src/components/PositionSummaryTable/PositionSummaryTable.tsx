@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PositionSummary } from "../../utils/interface";
 import "./PositionSummaryTable.css";
 import { EventCard } from "./EventCard/EventCard";
@@ -10,7 +10,23 @@ export interface PositionSummaryTableProps {
 export const PositionSummaryTable: React.FC<PositionSummaryTableProps> = ({
   summary,
 }) => {
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (summary !== undefined) {
+      setIsLoading(false);
+    }
+  }, [summary]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading Position Summary...</h2>
+      </div>
+    );
+  }
+
+  return summary && summary.length > 0 ? (
     <div className="PositionSummaryTable">
       <h2>Position Summary Table</h2>
       <table>
@@ -18,12 +34,12 @@ export const PositionSummaryTable: React.FC<PositionSummaryTableProps> = ({
           <tr>
             <th>Account</th>
             <th>Security</th>
-            <th>Quantity</th>
+            <th>Total Quantity</th>
             <th>Events</th>
           </tr>
         </thead>
         <tbody>
-          {summary?.map((item, index) => (
+          {summary.map((item, index) => (
             <tr key={index}>
               <td>{item.account}</td>
               <td>{item.security}</td>
@@ -37,6 +53,11 @@ export const PositionSummaryTable: React.FC<PositionSummaryTableProps> = ({
           ))}
         </tbody>
       </table>
+    </div>
+  ) : (
+    <div>
+      <h2>No Position Summary Available</h2>
+      <p>Please add trade events to generate a position summary.</p>
     </div>
   );
 };

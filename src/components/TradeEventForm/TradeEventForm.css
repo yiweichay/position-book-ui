@@ -24,22 +24,46 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font: var(--font-family);
+  font-size: small;
 }
 
 button:hover {
   background-color: var(--secondary-color);
 }
 
-button[type="button"] {
-  background-color: #ff4d4d;
-}
-
-button[type="button"]:hover {
-  background-color: #cc0000;
-}
-
 .button-wrapper {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1rem;
+}
+
+.trade-event-card {
+  position: relative;
+  padding: 1rem;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: #cc0000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.delete-icon.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.delete-icon:hover {
+  color: #990000;
+}
+
+.submit-button {
+  background-color: green;
 }
