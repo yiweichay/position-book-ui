@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TradeEventBlock } from "../TradeEventBlock/TradeEventBlock";
+import { SingleTradeEventForm } from "../SingleTradeEventForm/SingleTradeEventForm";
 import { TradeAction, TradeEvent } from "../../utils/interface";
 import "./TradeEventForm.css";
 
@@ -50,7 +50,7 @@ export const TradeEventForm: React.FC<TradeEventFormProps> = ({
     <div className="TradeEventForm">
       <form onSubmit={handleSubmit}>
         {tradeEvents.map((event, index) => (
-          <TradeEventBlock
+          <SingleTradeEventForm
             key={index}
             event={event}
             onChange={(field, value) => handleEventChange(index, field, value)}

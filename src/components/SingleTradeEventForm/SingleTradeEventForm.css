@@ -17,8 +17,8 @@
   font-weight: bold;
   margin-right: 1rem;
   color: var(--secondary-color);
-  width: 120px; /* Fixed width for labels */
-  text-align: right; /* Align label text to the right */
+  width: 120px; 
+  text-align: right; 
 }
 
 .TradeEventBlock .form-group input,

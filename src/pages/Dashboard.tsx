@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { PositionSummary } from "./PositionSummary";
+import { PositionSummaryPage } from "./PositionSummaryPage";
 import { CreateEvent } from "./CreateEvent";
 import { Navbar } from "../components/Navbar/Navbar";
 
@@ -10,7 +10,7 @@ export const Dashboard = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="position-summary" replace />} />
-        <Route path="position-summary" element={<PositionSummary />} />
+        <Route path="position-summary" element={<PositionSummaryPage />} />
         <Route path="create-event" element={<CreateEvent />} />
       </Routes>
     </div>

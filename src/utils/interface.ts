@@ -22,3 +22,7 @@ export interface PositionSummary {
     quantity: number;
     events: TradeEvent[];
 }
+
+export interface PositionSummaryResponse {
+    positions: PositionSummary[];
+}

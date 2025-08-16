@@ -1,12 +1,12 @@
 import { TradeEvent } from "../../utils/interface";
-import "./TradeEventBlock.css";
+import "./SingleTradeEventForm.css";
 
-interface TradeEventBlockProps {
+interface SingleTradeEventFormProps {
     event: TradeEvent;
     onChange: (field: string, value: string | number) => void;
 }
 
-export const TradeEventBlock: React.FC<TradeEventBlockProps> = ({event, onChange})  => {
+export const SingleTradeEventForm: React.FC<SingleTradeEventFormProps> = ({event, onChange})  => {
   return (
     <div className="TradeEventBlock">
       <div className="form-group">
@@ -35,7 +35,7 @@ export const TradeEventBlock: React.FC<TradeEventBlockProps> = ({event, onChange
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor={`account-${event.id}`}>Account</label>
+        <label htmlFor={`account-${event.id}`}>Account Name</label>
         <input
           type="text"
           id={`account-${event.id}`}
@@ -46,7 +46,7 @@ export const TradeEventBlock: React.FC<TradeEventBlockProps> = ({event, onChange
         />
       </div>
       <div className="form-group">
-        <label htmlFor={`security-${event.id}`}>Security</label>
+        <label htmlFor={`security-${event.id}`}>Security Name</label>
         <input
           type="text"
           id={`security-${event.id}`}
