@@ -1,0 +1,36 @@
+.timed-popup-overlay {
+  position: fixed;
+  top: 1rem; 
+  right: 1rem; 
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.timed-popup-content {
+  background-color: #d64b4b;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 300px;
+  width: 100%;
+  animation: fade-in-out 0.3s ease-in-out;
+}
+
+.timed-popup-content p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

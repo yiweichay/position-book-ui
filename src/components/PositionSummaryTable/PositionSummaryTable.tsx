@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { PositionSummary } from "../../utils/interface";
 import "./PositionSummaryTable.css";
 import { EventCard } from "./EventCard/EventCard";
@@ -10,22 +10,6 @@ export interface PositionSummaryTableProps {
 export const PositionSummaryTable: React.FC<PositionSummaryTableProps> = ({
   summary,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (summary !== undefined) {
-      setIsLoading(false);
-    }
-  }, [summary]);
-
-  if (isLoading) {
-    return (
-      <div>
-        <h2>Loading Position Summary...</h2>
-      </div>
-    );
-  }
-
   return summary && summary.length > 0 ? (
     <div className="PositionSummaryTable">
       <h2>Position Summary Table</h2>
