@@ -7,7 +7,7 @@ import { usePositionSummary } from "../context/PositionSummaryContext";
 import { useNavigate } from "react-router-dom";
 
 export const CreateEvent = () => {
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>('');
   const { fetchSummary } = usePositionSummary();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const CreateEvent = () => {
   };
 
   const closePopUp = () => {
-    setError(null);
+    setError('');
   };
 
   return (

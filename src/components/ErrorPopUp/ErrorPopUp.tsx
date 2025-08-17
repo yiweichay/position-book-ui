@@ -12,6 +12,7 @@ export const ErrorPopUp: React.FC<ErrorPopUpProps> = ({
   duration = 3000,
   onClose,
 }) => {
+    
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();

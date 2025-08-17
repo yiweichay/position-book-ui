@@ -19,7 +19,7 @@ export interface PositionSummaryContextType {
 
 const PositionSummaryContext = createContext<PositionSummaryContextType>({
   summary: {},
-  positionSummaryError: "",
+  positionSummaryError: '',
   fetchSummary: async () => {},
   setSummary: () => {},
   setPositionSummaryError: () => {},
@@ -27,7 +27,7 @@ const PositionSummaryContext = createContext<PositionSummaryContextType>({
 
 export const PositionSummaryProvider = ({ children }: PropsWithChildren) => {
   const [summary, setSummary] = useState<PositionSummaryResponse>({});
-  const [positionSummaryError, setPositionSummaryError] = useState<string>("");
+  const [positionSummaryError, setPositionSummaryError] = useState<string>('');
 
   const fetchSummary = async () => {
     try {

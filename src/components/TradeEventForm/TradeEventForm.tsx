@@ -12,9 +12,7 @@ export interface TradeEventFormProps {
 export const TradeEventForm: React.FC<TradeEventFormProps> = ({
   handleFormSubmit,
 }) => {
-  const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([
-    { id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },
-  ]);
+  const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([{ id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },]);
 
   const handleAddTradeEvent = () => {
     setTradeEvents([
