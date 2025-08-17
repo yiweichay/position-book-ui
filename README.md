@@ -11,7 +11,7 @@ In the Create Event tab, users are able to define the parameters of each event a
 
 ## Backend system
 
-The backend of this UI is served through the position-book-service repo.
+The backend of this UI is served through the [position-book-service](https://github.com/yiweichay/position-book-service) repo. Steps to get started with the backend 
 
 ## Tech and Getting Started
 
