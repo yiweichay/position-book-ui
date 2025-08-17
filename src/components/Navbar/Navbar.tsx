@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Navbar.css'; 
 
 export const Navbar = () => {
@@ -7,10 +7,10 @@ export const Navbar = () => {
       <nav>
         <ul>
           <li>
-            <Link to="position-summary">Position Summary</Link>
+            <NavLink to="position-summary">Position Summary</NavLink>
           </li>
           <li>
-            <Link to="create-event">Create Event</Link>
+            <NavLink to="create-event">Create Event</NavLink>
           </li>
         </ul>
       </nav>

@@ -1,6 +1,6 @@
 .Navbar {
   background-color:  hsl(36, 38%, 92%);
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,4 +27,11 @@
 
 .Navbar nav ul li a:hover {
   color: --secondary-color;
+}
+
+.Navbar nav ul li a.active {
+  background-color: var(--primary-color-light);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }

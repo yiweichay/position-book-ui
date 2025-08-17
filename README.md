@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Position Book UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A position book is a record of all positions held by a trader/portfolio. In this UI, users are able to create trade events and view a summary table of the position book. 
 
-## Available Scripts
+## Overview
+### Position Summary Tab
+In the Position Summary tab, users are able to view a summary table of the position book, i.e. the account, the security name, total trade quantity per account per security, as well as each event that was created in relation to this account and security.
 
-In the project directory, you can run:
+### Create Event Tab
+In the Create Event tab, users are able to define the parameters of each event accordingly. Users are also able send multiple trade events by using the 'Add Trade Event' button before submitting. 
 
-### `npm start`
+## Backend system
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The backend of this UI is served through the position-book-service repo.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech and Getting Started
 
-### `npm test`
+This project is a React typescript based Web UI.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started, make sure you have npm and node installed. In the project directory, you can run:
 
-### `npm run build`
+```
+npm install
+npm run start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the unit tests in this project, run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm run test api.test.ts`
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
