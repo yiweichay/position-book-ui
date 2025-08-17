@@ -35,3 +35,8 @@
 .PositionSummaryTable tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+.no-position-summary-data {
+  text-align: center;
+  padding: 2rem;
+}

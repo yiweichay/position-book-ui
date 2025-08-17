@@ -39,9 +39,9 @@ export const PositionSummaryTable: React.FC<PositionSummaryTableProps> = ({
       </table>
     </div>
   ) : (
-    <div>
+    <div className="no-position-summary-data">
       <h2>No Position Summary Available</h2>
-      <p>Please add trade events to generate a position summary.</p>
+      <p>Please add trade events to generate a position summary table.</p>
     </div>
   );
 };

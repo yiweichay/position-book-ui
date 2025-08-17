@@ -42,7 +42,6 @@ export const TradeEventForm: React.FC<TradeEventFormProps> = ({
       [field]: value,
     };
     setTradeEvents(updatedEvents);
-    console.log("tradeEvents", tradeEvents);
   };
 
   const handleDeleteTradeEvent = (index: number) => {

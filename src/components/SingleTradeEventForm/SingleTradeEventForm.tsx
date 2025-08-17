@@ -2,17 +2,20 @@ import { TradeEvent } from "../../utils/interface";
 import "./SingleTradeEventForm.css";
 
 interface SingleTradeEventFormProps {
-    event: TradeEvent;
-    onChange: (field: string, value: string | number) => void;
+  event: TradeEvent;
+  onChange: (field: string, value: string | number) => void;
 }
 
-export const SingleTradeEventForm: React.FC<SingleTradeEventFormProps> = ({event, onChange})  => {
+export const SingleTradeEventForm: React.FC<SingleTradeEventFormProps> = ({
+  event,
+  onChange,
+}) => {
   return (
     <div className="TradeEventBlock">
       <div className="form-group">
         <label htmlFor={`id-${event.id}`}>ID</label>
         <input
-          type="text"
+          type="number"
           id={`id-${event.id}`}
           name="id"
           value={event.id}
@@ -69,4 +72,4 @@ export const SingleTradeEventForm: React.FC<SingleTradeEventFormProps> = ({event
       </div>
     </div>
   );
-}
+};
