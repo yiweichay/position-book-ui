@@ -1,4 +1,4 @@
-import { TradeEvent } from "../../utils/interface";
+import { TradeAction, TradeEvent } from "../../utils/interface";
 import "./SingleTradeEventForm.css";
 
 interface SingleTradeEventFormProps {
@@ -32,9 +32,9 @@ export const SingleTradeEventForm: React.FC<SingleTradeEventFormProps> = ({
           onChange={(e) => onChange("action", e.target.value)}
           required
         >
-          <option value="Buy">Buy</option>
-          <option value="Sell">Sell</option>
-          <option value="Cancel">Cancel</option>
+          <option value={TradeAction.BUY}>Buy</option>
+          <option value={TradeAction.SELL}>Sell</option>
+          <option value={TradeAction.CANCEL}>Cancel</option>
         </select>
       </div>
       <div className="form-group">

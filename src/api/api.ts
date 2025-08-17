@@ -1,6 +1,6 @@
 import { TradeEventRequest } from "../utils/interface";
 
-const url = "http://localhost:8080/api";
+const url = "http://localhost:8080/api/v1";
 
 export const getPositionSummary = async () => {
   try {

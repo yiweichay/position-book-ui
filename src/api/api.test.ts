@@ -35,7 +35,7 @@ describe("API Tests", () => {
     const result = await getPositionSummary();
     expect(result).toEqual(mockResponse);
     expect(global.fetch).toHaveBeenCalledWith(
-      "http://localhost:8080/api/getPositionSummary",
+      "http://localhost:8080/api/v1/getPositionSummary",
       {
         method: "GET",
       }
@@ -84,7 +84,7 @@ describe("API Tests", () => {
     const result = await createTradeEvent(mockEvent);
     expect(result).toEqual(mockEvent);
     expect(global.fetch).toHaveBeenCalledWith(
-      "http://localhost:8080/api/createEvent",
+      "http://localhost:8080/api/v1/createEvent",
       {
         method: "POST",
         body: JSON.stringify(mockEvent),
