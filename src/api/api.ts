@@ -30,10 +30,18 @@ export const createTradeEvent = async (eventData: TradeEventRequest) => {
       body: JSON.stringify(eventData),
       headers: { "Content-Type": "application/json" },
     });
-    if (!response.ok) {
-      const error: any = new Error(`Request failed with status ${response.status}`);
-      error.status = response.status;
-      throw error;
+    if (response.status === 500) {
+      throw new Error(
+        "Internal Server Error: Unable to create position summary"
+      );
+    } else if (response.status === 404) {
+      throw new Error(
+        "404 Not Found: ID not found for trade cancellation"
+      );
+    } else if (response.status === 400) {
+      throw new Error(
+        "400 Bad Request: Event ID already exists"
+      );
     }
     return await response.json();
   } catch (error) {

@@ -1,20 +1,18 @@
-import React, { useState } from "react";
 import { PositionSummaryTable } from "../components/PositionSummaryTable/PositionSummaryTable";
 import { ErrorPopUp } from "../components/ErrorPopUp/ErrorPopUp";
 import { usePositionSummary } from "../context/PositionSummaryContext";
 
 export const PositionSummaryPage = () => {
-  const [error, setError] = useState<string | null>(null);
-  const { summary } = usePositionSummary();
+  const { summary, positionSummaryError, setPositionSummaryError } = usePositionSummary();
 
   const closePopUp = () => {
-    setError(null);
+    setPositionSummaryError(null);
   };
 
   return (
     <div className="position-summary-wrapper">
       <PositionSummaryTable summary={summary?.positions} />
-      {error && <ErrorPopUp message={error} onClose={closePopUp} />}
+      {positionSummaryError && <ErrorPopUp message={positionSummaryError} onClose={closePopUp} />}
     </div>
   );
 };

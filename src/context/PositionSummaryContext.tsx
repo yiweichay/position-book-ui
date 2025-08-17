@@ -4,21 +4,34 @@ import { getPositionSummary } from "../api/api";
 
 type PositionSummaryContextType = {
   summary: PositionSummaryResponse | undefined;
-  setSummary: React.Dispatch<React.SetStateAction<PositionSummaryResponse | undefined>>;
+  positionSummaryError: string | null;
   fetchSummary: () => Promise<void>;
+  setSummary: React.Dispatch<React.SetStateAction<PositionSummaryResponse | undefined>>;
+  setPositionSummaryError: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const PositionSummaryContext = createContext<PositionSummaryContextType | undefined>(undefined);
+const PositionSummaryContext = createContext<
+  PositionSummaryContextType | undefined
+>(undefined);
 
-export const PositionSummaryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PositionSummaryProvider: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
   const [summary, setSummary] = useState<PositionSummaryResponse>();
+  const [positionSummaryError, setPositionSummaryError] = useState<
+    string | null
+  >(null);
 
   const fetchSummary = async () => {
     try {
       const data = await getPositionSummary();
       setSummary(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error fetching position summary:", error);
+      setPositionSummaryError(
+        error.message ||
+          "An error occurred while fetching the position summary."
+      );
     }
   };
 
@@ -27,7 +40,15 @@ export const PositionSummaryProvider: React.FC<{ children: React.ReactNode }> = 
   }, []);
 
   return (
-    <PositionSummaryContext.Provider value={{ summary, setSummary, fetchSummary }}>
+    <PositionSummaryContext.Provider
+      value={{
+        summary,
+        setSummary,
+        fetchSummary,
+        positionSummaryError,
+        setPositionSummaryError,
+      }}
+    >
       {children}
     </PositionSummaryContext.Provider>
   );

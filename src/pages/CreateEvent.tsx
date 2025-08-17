@@ -4,21 +4,22 @@ import { createTradeEvent } from "../api/api";
 import { TradeEventForm } from "../components/TradeEventForm/TradeEventForm";
 import { ErrorPopUp } from "../components/ErrorPopUp/ErrorPopUp";
 import { usePositionSummary } from "../context/PositionSummaryContext";
+import { useNavigate } from "react-router-dom";
 
 export const CreateEvent = () => {
   const [error, setError] = useState<string | null>(null);
   const { fetchSummary } = usePositionSummary();
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (events: TradeEvent[]) => {
     try {
       await createTradeEvent({ events });
       await fetchSummary();
+      navigate("/position-summary");
     } catch (error: any) {
-      if (error.status) {
-        setError(`Error ${error.status}: ${error.message}`);
-      } else {
-        setError(error.message || "An unknown error occurred.");
-      }
+      setError(
+        error.message || "An error occurred while creating trade event."
+      );
     }
   };
 

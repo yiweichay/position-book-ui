@@ -4,7 +4,6 @@ import { TradeAction, TradeEvent } from "../../utils/interface";
 import "./TradeEventForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 export interface TradeEventFormProps {
   handleFormSubmit: (events: TradeEvent[]) => void;
@@ -16,7 +15,6 @@ export const TradeEventForm: React.FC<TradeEventFormProps> = ({
   const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([
     { id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },
   ]);
-  const navigate = useNavigate();
 
   const handleAddTradeEvent = () => {
     setTradeEvents([
@@ -52,7 +50,6 @@ export const TradeEventForm: React.FC<TradeEventFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleFormSubmit(tradeEvents);
-    navigate("/position-summary");
   };
 
   return (
