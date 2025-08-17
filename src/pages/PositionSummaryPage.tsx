@@ -6,7 +6,7 @@ export const PositionSummaryPage = () => {
   const { summary, positionSummaryError, setPositionSummaryError } = usePositionSummary();
 
   const closePopUp = () => {
-    setPositionSummaryError(null);
+    setPositionSummaryError('');
   };
 
   return (

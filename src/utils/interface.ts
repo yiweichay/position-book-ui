@@ -24,5 +24,5 @@ export interface PositionSummary {
 }
 
 export interface PositionSummaryResponse {
-    positions: PositionSummary[];
+    positions?: PositionSummary[];
 }

@@ -1,26 +1,33 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  PropsWithChildren,
+  useMemo,
+} from "react";
 import { PositionSummaryResponse } from "../utils/interface";
 import { getPositionSummary } from "../api/api";
 
-type PositionSummaryContextType = {
-  summary: PositionSummaryResponse | undefined;
-  positionSummaryError: string | null;
+export interface PositionSummaryContextType {
+  summary: PositionSummaryResponse;
+  positionSummaryError: string;
   fetchSummary: () => Promise<void>;
-  setSummary: React.Dispatch<React.SetStateAction<PositionSummaryResponse | undefined>>;
-  setPositionSummaryError: React.Dispatch<React.SetStateAction<string | null>>;
-};
+  setSummary: React.Dispatch<React.SetStateAction<PositionSummaryResponse>>;
+  setPositionSummaryError: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const PositionSummaryContext = createContext<
-  PositionSummaryContextType | undefined
->(undefined);
+const PositionSummaryContext = createContext<PositionSummaryContextType>({
+  summary: {},
+  positionSummaryError: "",
+  fetchSummary: async () => {},
+  setSummary: () => {},
+  setPositionSummaryError: () => {},
+});
 
-export const PositionSummaryProvider: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
-  const [summary, setSummary] = useState<PositionSummaryResponse>();
-  const [positionSummaryError, setPositionSummaryError] = useState<
-    string | null
-  >(null);
+export const PositionSummaryProvider = ({ children }: PropsWithChildren) => {
+  const [summary, setSummary] = useState<PositionSummaryResponse>({});
+  const [positionSummaryError, setPositionSummaryError] = useState<string>("");
 
   const fetchSummary = async () => {
     try {
@@ -39,27 +46,22 @@ export const PositionSummaryProvider: React.FC<{
     fetchSummary();
   }, []);
 
+  const value = useMemo(
+    () => ({
+      summary,
+      setSummary,
+      fetchSummary,
+      positionSummaryError,
+      setPositionSummaryError,
+    }),
+    [summary, positionSummaryError]
+  );
+
   return (
-    <PositionSummaryContext.Provider
-      value={{
-        summary,
-        setSummary,
-        fetchSummary,
-        positionSummaryError,
-        setPositionSummaryError,
-      }}
-    >
+    <PositionSummaryContext.Provider value={value}>
       {children}
     </PositionSummaryContext.Provider>
   );
 };
 
-export const usePositionSummary = () => {
-  const context = useContext(PositionSummaryContext);
-  if (!context) {
-    throw new Error(
-      "usePositionSummary must be used within a PositionSummaryProvider"
-    );
-  }
-  return context;
-};
+export const usePositionSummary = () => useContext(PositionSummaryContext);
