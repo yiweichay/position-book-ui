@@ -3,13 +3,16 @@ import { TradeEvent } from "../utils/interface";
 import { createTradeEvent } from "../api/api";
 import { TradeEventForm } from "../components/TradeEventForm/TradeEventForm";
 import { ErrorPopUp } from "../components/ErrorPopUp/ErrorPopUp";
+import { usePositionSummary } from "../context/PositionSummaryContext";
 
 export const CreateEvent = () => {
   const [error, setError] = useState<string | null>(null);
+  const { fetchSummary } = usePositionSummary();
 
   const handleFormSubmit = async (events: TradeEvent[]) => {
     try {
       await createTradeEvent({ events });
+      await fetchSummary();
     } catch (error: any) {
       if (error.status) {
         setError(`Error ${error.status}: ${error.message}`);
