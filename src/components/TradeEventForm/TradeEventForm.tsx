@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SingleTradeEventForm } from "../SingleTradeEventForm/SingleTradeEventForm";
 import { TradeAction, TradeEvent } from "../../utils/interface";
 import "./TradeEventForm.css";
@@ -12,11 +12,13 @@ export interface TradeEventFormProps {
 export const TradeEventForm: React.FC<TradeEventFormProps> = ({
   handleFormSubmit,
 }) => {
-  const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([{ id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },]);
+  const [tradeEvents, setTradeEvents] = useState<TradeEvent[]>([
+    { id: 0, action: TradeAction.BUY, account: "", security: "", quantity: 0 },
+  ]);
 
-  const handleAddTradeEvent = () => {
-    setTradeEvents([
-      ...tradeEvents,
+  const handleAddTradeEvent = useCallback(() => {
+    setTradeEvents((prev) => [
+      ...prev,
       {
         id: 0,
         action: TradeAction.BUY,
@@ -25,25 +27,22 @@ export const TradeEventForm: React.FC<TradeEventFormProps> = ({
         quantity: 0,
       },
     ]);
-  };
+  }, []);
 
-  const handleEventChange = (
-    index: number,
-    field: string,
-    value: string | number
-  ) => {
-    const updatedEvents = [...tradeEvents];
-    updatedEvents[index] = {
-      ...updatedEvents[index],
-      [field]: value,
-    };
-    setTradeEvents(updatedEvents);
-  };
+  const handleEventChange = useCallback(
+    (index: number, field: string, value: string | number) => {
+      setTradeEvents((prev) => {
+        const updated = [...prev];
+        updated[index] = { ...updated[index], [field]: value };
+        return updated;
+      });
+    },
+    []
+  );
 
-  const handleDeleteTradeEvent = (index: number) => {
-    const updatedEvents = tradeEvents.filter((_, i) => i !== index);
-    setTradeEvents(updatedEvents);
-  };
+  const handleDeleteTradeEvent = useCallback((index: number) => {
+    setTradeEvents((prev) => prev.filter((_, i) => i !== index));
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
